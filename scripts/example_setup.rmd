@@ -46,5 +46,27 @@ lhct <- read_table(list.files(subdirs$data, pattern = "lh"), show_col_types = FA
 
 rhct = read_table(list.files(subdirs$data, pattern = "rh"), show_col_types = FALSE)# right hemisphere
 
+# Set the ADSCT version to calculate
+adsct_type = "jack"
+
+# Calculate ADSCT
+adsct <- list(
+    calc_adsct(lhct, rhct, type = adsct_type)
+)
+
+
+# Calculate ADSCT for multiple versions
+adsct_vers <- list(
+    calc_adsct(lhct, rhct, type = "jack"), # Calculate Jack version
+    calc_adsct(lhct, rhct, type = "schwarz") # Calculate Schwarz version
+) %>%
+    # Add column names
+    set_names(c("jack", "schwarz")) %>%
+    list_name_to_df(column_name = "name") %>%
+    rbindlist(., fill = TRUE) %>%
+    # Rename the variables
+    rename(ID = subject, value = adsct) %>%
+    # Convert data from long to wide format
+    pivot_wider(names_glue = "adsct_{name}")
 
 ```
