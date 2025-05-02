@@ -157,11 +157,11 @@ Project Link: [https://github.com/themmantho/adsct](https://github.com/themmanth
 
 <!-- ACKNOWLEDGMENTS -->
 
-## Acknowledgments
+# ## Acknowledgments
 
-- []()
-- []()
-- []()
+#- []()
+#- []()
+#- []()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
