@@ -21,7 +21,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/adsct">
+  <a href="https://github.com/themmantho/adsct">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -30,14 +30,14 @@
   <p align="center">
     Alzheimer's Disease-Signature Cortical Thickness Calculation
     <br />
-    <a href="https://github.com/github_username/adsct"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/themmantho/adsct"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/adscte">View Demo</a>
+    <a href="https://github.com/themmantho/adscte">View Demo</a>
     &middot;
-    <a href="https://github.com/github_username/adsct/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    <a href="https://github.com/themmantho/adsct/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     &middot;
-    <a href="https://github.com/github_username/adsct/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/themmantho/adsct/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
 
@@ -71,7 +71,13 @@
 
 ## About The Project
 
-Here's a blank template to get started. To avoid retyping too much info, do a search and replace with your text editor for the following: `github_username`, `adsct`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`, `project_license`
+Alzheimer's disease (AD) symptoms - progressive memory, executive function, visuospatial, and language impairments - are related to neurodegeneration of specific brain regions, particularly in the paralimbic and association cortices. Neurodegeneration of these regions can be detected in the early stages of AD using AD-signature cortical thickness (ADSCT), a measure of select regional cortical thinning related to symptom severity in AD, including early stages of the disease.
+
+Several versions of ADSCT have been proposed, including by Dickerson et al. (2009) [https://doi.org/10.1093/cercor/bhn113], Jack et al. (2015) [https://doi.org/10.1093/brain/awv283], and Schwarz et al. (2016) [https://doi.org/10.1016/j.nicl.2016.05.017].
+
+“AD signature index” measure by first performing a linear regression in the amyloid-negative control group with the Aging signature as the independent variable and the AD signature as the dependent variable. We then used this equation to calculate the “AD signature index values for each MCI patient.” Thus, an individual with a lower AD signature index value has cortical thickness within the AD signature ROIs that is disproportionately smaller than the thickness of the Aging signature ROIs, likely reflecting more specific AD-related neurodegeneration. Alternatively, an individual with a higher AD signature index value has cortical thickness within the AD signature ROIs that is of similar relative magnitude to Aging signature ROIs, possibly reflecting more diffuse effects.
+
+Here's a blank template to get started. To avoid retyping too much info, do a search and replace with your text editor for the following: `themmantho`, `themmantho`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`, `project_license`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -126,8 +132,21 @@ Column key: <br />
 `BrainSegVolNotVent` Brain Segmentation Volume Without Ventricles <br />
 `eTIV` Estimated Total Intracranial Volume <br />
 
+### ADSCT Versions
 
+There are several versions of ADSCT available.
 
+#### Jack et al.
+
+Original version using bilateral entorhinal cortex, fusiform gyrus, and inferior and middle temporal gyri. See https://doi.org/10.1093/brain/awv283
+
+#### Schwarz et al.
+
+Updated version including bilateral entorhinal cortex, inferior temporal, mid-temporal, inferior parietal, fusiform, and precuneus regions.
+
+#### Dickerson et al.
+
+Includes bilateral entorhinal cortex, inferior temporal, middle temporal, temporal pole, inferior parietal, superior parietal, superior frontal, inferior frontal, and precuneus regions.
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
@@ -142,7 +161,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] Feature 3
   - [ ] Nested Feature
 
-See the [open issues](https://github.com/github_username/adsct/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/themmantho/adsct/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -177,16 +196,16 @@ Project Link: [https://github.com/themmantho/adsct](https://github.com/themmanth
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/adsct.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/adsct/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/adsct.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/adsct/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/adsct.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/adsct/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/adsct.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/adsct/issues
-[license-shield]: https://img.shields.io/github/license/github_username/adsct.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/adsct/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/themmantho/adsct.svg?style=for-the-badge
+[contributors-url]: https://github.com/themmantho/adsct/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/themmantho/adsct.svg?style=for-the-badge
+[forks-url]: https://github.com/themmantho/adsct/network/members
+[stars-shield]: https://img.shields.io/github/stars/themmantho/adsct.svg?style=for-the-badge
+[stars-url]: https://github.com/themmantho/adsct/stargazers
+[issues-shield]: https://img.shields.io/github/issues/themmantho/adsct.svg?style=for-the-badge
+[issues-url]: https://github.com/themmantho/adsct/issues
+[license-shield]: https://img.shields.io/github/license/themmantho/adsct.svg?style=for-the-badge
+[license-url]: https://github.com/themmantho/adsct/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/screenshot.png
