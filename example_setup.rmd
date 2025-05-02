@@ -1,0 +1,87 @@
+---
+title: "Calculate"
+author: "Mia Anthony"
+date: "2025-05-02"
+# last updated: "2024-12-04"
+output: html_document
+---
+
+
+```{r libraries, include=FALSE}
+# Install and load the pacman library to assist with installing other libraries, then load the additional libraries with pacman
+
+install.packages("pacman", quietly = TRUE)
+library(pacman)
+
+# Use pacman to install and load the other libraries
+pacman::p_load(
+    data.table,
+    magrittr,
+    tidyverse,
+    janitor,
+    readr,
+    rlist,
+    listr,
+    sjmisc,
+    vroom
+)
+
+# Change local path for the calc_adsct.r script
+function_dir = "/path/to/script"
+source(file.path(function_dir, "calc_adsct.r"))
+```
+
+```{r load data, include=FALSE}
+# Set the filepath to the input dataset
+filepath <- "/Users/manthony1/Library/CloudStorage/Box-Box/GitHub/circle_plot/demo_data.xlsx"
+# Specify the name of the excel sheet to read (e.g., 'demo' or 'Sheet1'). The sheet name must be enclosed in quotations.
+# In this example, the first sheet is named "demo".
+sheet_name <- "demo"
+
+# Load the data. If you receive the error message "Error: Sheet 'demo' not found", check the name of the sheet you are trying to load, save the Excel file, and then re-run the code chunk.
+data <- read_xlsx(filepath, sheet = sheet_name) %>%
+    # Convert the first column to rownames
+    column_to_rownames(var = "Name")
+
+tmp <- data.table::CJ(rownames(data), colnames(data), sorted = FALSE) %>%
+    filter(V1 != V2)
+
+# Create a lookup table to find the type of research each person does (human, animal, cross-species).
+# The Excel sheet called "node_attributes" should be filled in before loading the data.
+# Note: The node_attribute sheet is assumed to be in the same Excel file as the "demo" sheet.
+# If it's not, uncomment the next line and define the filepath for the node_attributes file.
+# filepath = /path/to/node_attributes
+lookup = read_xlsx(filepath, sheet = "node_attributes") # load the lookup table from Excel
+
+# Here we use the igraph library to create a graph object as a shortcut to extract unique connections.
+# A list of connections is called an edge list in graph theory. An undirected graph means that the connections do not have directionality (i.e., a->b and b->a are the same direction. The connection is considered bidirectional, so the direction does not matter).
+# If your graph connections do have directionality, then change the mode to "directed".
+# Keep diag = FALSE - this excludes self-connections and keeps the graph tidy and easier to interpret.
+edge_list <- graph.adjacency(as.matrix(data), mode = "undirected", diag = FALSE) %>%
+    igraph::as_edgelist()
+
+# Define edge attributes for visualization. Edge attributes are characteristics of the connections between nodes.
+edge_attr <- edge_list %>%
+    as_tibble() %>%
+    set_colnames(c("name", "name_y")) %>%
+    # Look up each person's research type in the first column, joining by the variable "name"
+    left_join(lookup, by = "name") %>%
+    # Rename the "name" variable with a placeholder, so that the second column can be labeled "name"
+    rename(name_x = name, name = name_y) %>%
+    # Look up the research type in the second column, joining by the variable "name"
+    left_join(lookup, by = "name") %>%
+    rename(name_y = name) %>%
+    mutate(
+        # Add a variable for research collaboration type (research conducted between pairs of people)
+        research_collab = case_when(
+            # Label human-human collaborations as "human"
+            research.x == "Human" & research.y == "Human" ~ "Human",
+            # Label animal-animal collaborations as "animal"
+            research.x == "Animal" & research.y == "Animal" ~ "Animal",
+            # Label human-animal, animal-human, or cross-species collaborations as "cross-species"
+            research.x == "Human" & research.y == "Animal" ~ "Cross-species",
+            research.x == "Animal" & research.y == "Human" ~ "Cross-species",
+            research.x == "Cross-species" | research.y == "Cross-species" ~ "Cross-species"
+        )
+    )
+```
