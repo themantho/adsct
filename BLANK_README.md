@@ -116,17 +116,18 @@ To get a local copy up and running follow these simple example steps.
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
 Example cortical thickness files can be found in `example_data`. There are separate files for left ('lh') and right ('rh') hemispheres. The prefix (lh/rh) of the columns indicates left and right hemisphere, respectively.
 
-Column key:
+Column key: <br />
 `*h.aparc.thickness` subject ID <br />
 `*h_<region name>_thickness` Regional cortical thickness (millimeters) for the Desikan-Killiany atlas (default in FreeSurfer). <br />
 
 `lh_MeanThickness_thickness` Mean cortical thickness <br />
 `BrainSegVolNotVent` Brain Segmentation Volume Without Ventricles <br />
 `eTIV` Estimated Total Intracranial Volume <br />
+
+
+
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
