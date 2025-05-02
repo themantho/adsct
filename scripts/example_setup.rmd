@@ -1,0 +1,50 @@
+---
+title: "Calculate"
+author: "Mia Anthony"
+date: "2025-05-02"
+# last updated: "2024-12-04"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+# Set up directories
+project_dir <- "path/to/adsct" # Change the path to the location of the adsct repo
+subdirs <- list(
+    data = file.path(project_dir, "data"),
+    derivatives = file.path(project_dir, "derivatives"),
+    functions = file.path(project_dir, "functions"),
+    scripts = file.path(project_dir, "scripts")
+)
+```
+
+```{r libraries, include=FALSE}
+# Install and load the pacman library to assist with installing other libraries, then load the additional libraries with pacman
+
+install.packages("pacman", quietly = TRUE)
+library(pacman)
+
+# Use pacman to install and load the other libraries
+pacman::p_load(
+    data.table,
+    magrittr,
+    tidyverse,
+    janitor,
+    readr,
+    rlist,
+    listr,
+    sjmisc,
+    vroom
+)
+
+# Load the script to calculate adsct
+source(file.path(subdirs$functions, "calc_adsct.r"))
+```
+
+```{r load data, include=FALSE}
+# Load the cortical thickness data
+lhct <- read_table(list.files(subdirs$data, pattern = "lh"), show_col_types = FALSE) # left hemisphere
+
+rhct = read_table(list.files(subdirs$data, pattern = "rh"), show_col_types = FALSE)# right hemisphere
+
+
+```
