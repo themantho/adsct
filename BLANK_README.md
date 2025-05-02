@@ -77,8 +77,6 @@ Several versions of ADSCT have been proposed, including by Dickerson et al. (200
 
 “AD signature index” measure by first performing a linear regression in the amyloid-negative control group with the Aging signature as the independent variable and the AD signature as the dependent variable. We then used this equation to calculate the “AD signature index values for each MCI patient.” Thus, an individual with a lower AD signature index value has cortical thickness within the AD signature ROIs that is disproportionately smaller than the thickness of the Aging signature ROIs, likely reflecting more specific AD-related neurodegeneration. Alternatively, an individual with a higher AD signature index value has cortical thickness within the AD signature ROIs that is of similar relative magnitude to Aging signature ROIs, possibly reflecting more diffuse effects.
 
-Here's a blank template to get started. To avoid retyping too much info, do a search and replace with your text editor for the following: `themmantho`, `themmantho`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`, `project_license`
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
@@ -97,9 +95,6 @@ Here's a blank template to get started. To avoid retyping too much info, do a se
 <!-- GETTING STARTED -->
 
 ## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
@@ -133,8 +128,6 @@ Column key: <br />
 `eTIV` Estimated Total Intracranial Volume <br />
 
 ### ADSCT Versions
-
-There are several versions of ADSCT available.
 
 #### Jack et al.
 
