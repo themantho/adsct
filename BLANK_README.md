@@ -31,13 +31,6 @@
     Alzheimer's Disease-Signature Cortical Thickness Calculation
     <br />
     <a href="https://github.com/themmantho/adsct"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/themmantho/adscte">View Demo</a>
-    &middot;
-    <a href="https://github.com/themmantho/adsct/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    &middot;
-    <a href="https://github.com/themmantho/adsct/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
 
