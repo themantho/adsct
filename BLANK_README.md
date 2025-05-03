@@ -107,9 +107,10 @@ Column key: <br />
 `*h.aparc.thickness` subject ID <br />
 `*h_<region name>_thickness` Regional cortical thickness (millimeters) for the Desikan-Killiany atlas (default in FreeSurfer). <br />
 
-`lh_MeanThickness_thickness` Mean cortical thickness <br />
+`*h_MeanThickness_thickness` Mean cortical thickness of all regions <br />
 `BrainSegVolNotVent` Brain Segmentation Volume Without Ventricles <br />
 `eTIV` Estimated Total Intracranial Volume <br />
+<br />
 
 `calc_adsct.R` accepts three arguments: <br />
 lhct -- a data.frame containing FreeSurfer's aparcstats2table cortical thickness output for the left hemisphere.
@@ -124,8 +125,7 @@ lhct = read_table(list.files(subdirs$data, pattern = "lh"), show_col_types = FAL
 rhct = read_table(list.files(subdirs$data, pattern = "rh"), show_col_types = FALSE)
 
 # Set the ADSCT version to calculate
-
-adsct_type = "jack"
+adsct_type = "jack" 
 
 # Calculate ADSCT
 adsct <- calc_adsct(lhct, rhct, type = adsct_type)
