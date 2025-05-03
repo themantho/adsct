@@ -75,8 +75,6 @@ Alzheimer's disease (AD) symptoms - progressive memory, executive function, visu
 
 Several versions of ADSCT have been proposed, including by Dickerson et al. (2009) [https://doi.org/10.1093/cercor/bhn113], Jack et al. (2015) [https://doi.org/10.1093/brain/awv283], and Schwarz et al. (2016) [https://doi.org/10.1016/j.nicl.2016.05.017].
 
-“AD signature index” measure by first performing a linear regression in the amyloid-negative control group with the Aging signature as the independent variable and the AD signature as the dependent variable. We then used this equation to calculate the “AD signature index values for each MCI patient.” Thus, an individual with a lower AD signature index value has cortical thickness within the AD signature ROIs that is disproportionately smaller than the thickness of the Aging signature ROIs, likely reflecting more specific AD-related neurodegeneration. Alternatively, an individual with a higher AD signature index value has cortical thickness within the AD signature ROIs that is of similar relative magnitude to Aging signature ROIs, possibly reflecting more diffuse effects.
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
