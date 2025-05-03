@@ -101,6 +101,20 @@ Several versions of ADSCT have been proposed, including by Dickerson et al. (200
 
 ## Usage
 
+### Preparing FreeSurfer cortical thickness files
+
+After running FreeSurfer's recon-all on your subjects, you can use the aparcstas2table function to convert the cortical stats files into a table in which each line is a subject and each column is a parcellation. See the FreeSurfer wiki for details on aparcstas2table [https://surfer.nmr.mgh.harvard.edu/fswiki/aparcstats2table].
+
+```
+# Left hemisphere
+aparcstats2table --subjectsfile --hemi lh --meas thickness --tablefile aparc_stats.txt
+
+# Right hemisphere
+aparcstats2table --subjectsfile --hemi rh --meas thickness --tablefile aparc_stats.txt
+```
+
+### Calculating ADSCT
+
 Example cortical thickness files can be found in `example_data`. There are separate files for left ('lh') and right ('rh') hemispheres. The prefix (lh/rh) of the columns indicates left and right hemisphere, respectively.
 
 Column key: <br />
@@ -125,7 +139,7 @@ lhct = read_table(list.files(subdirs$data, pattern = "lh"), show_col_types = FAL
 rhct = read_table(list.files(subdirs$data, pattern = "rh"), show_col_types = FALSE)
 
 # Set the ADSCT version to calculate
-adsct_type = "jack" 
+adsct_type = "jack"
 
 # Calculate ADSCT
 adsct <- calc_adsct(lhct, rhct, type = adsct_type)
