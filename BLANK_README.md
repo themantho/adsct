@@ -125,7 +125,7 @@ Column key: <br />
 `BrainSegVolNotVent` Brain Segmentation Volume Without Ventricles <br />
 `eTIV` Estimated Total Intracranial Volume <br />
 
-`calc_adsct.R` accepts three arguments:
+`calc_adsct.R` accepts three arguments: <br />
 lhct -- a data.frame containing FreeSurfer's aparcstats2table cortical thickness output for the left hemisphere.
 
 rhct -- a data.frame containing FreeSurfer's aparcstats2table cortical thickness output for the right hemisphere.
@@ -142,10 +142,7 @@ rhct = read_table(list.files(subdirs$data, pattern = "rh"), show_col_types = FAL
 adsct_type = "jack"
 
 # Calculate ADSCT
-
-adsct <- list(
-calc_adsct(lhct, rhct, type = adsct_type)
-)
+adsct <- calc_adsct(lhct, rhct, type = adsct_type)
 ```
 
 ### ADSCT Versions
