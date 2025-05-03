@@ -127,19 +127,45 @@ Column key: <br />
 `BrainSegVolNotVent` Brain Segmentation Volume Without Ventricles <br />
 `eTIV` Estimated Total Intracranial Volume <br />
 
+`calc_adsct.R` accepts three arguments:
+lhct -- a data.frame containing FreeSurfer's aparcstats2table cortical thickness output for the left hemisphere.
+
+rhct -- a data.frame containing FreeSurfer's aparcstats2table cortical thickness output for the right hemisphere.
+
+type -- the research group that proposed the AD-signature index; one of c("jack", "schwarz", "dickerson")
+
+```r
+# Load the cortical thickness data for each hemisphere separately
+lhct = read_table(list.files(subdirs$data, pattern = "lh"), show_col_types = FALSE)
+rhct = read_table(list.files(subdirs$data, pattern = "rh"), show_col_types = FALSE)
+
+# Set the ADSCT version to calculate
+
+adsct_type = "jack"
+
+# Calculate ADSCT
+
+adsct <- list(
+calc_adsct(lhct, rhct, type = adsct_type)
+)
+```
+
 ### ADSCT Versions
-
-#### Jack et al.
-
-Original version using bilateral entorhinal cortex, fusiform gyrus, and inferior and middle temporal gyri. See https://doi.org/10.1093/brain/awv283
-
-#### Schwarz et al.
-
-Updated version including bilateral entorhinal cortex, inferior temporal, mid-temporal, inferior parietal, fusiform, and precuneus regions.
 
 #### Dickerson et al.
 
-Includes bilateral entorhinal cortex, inferior temporal, middle temporal, temporal pole, inferior parietal, superior parietal, superior frontal, inferior frontal, and precuneus regions.
+The original version that includes bilateral entorhinal cortex, inferior temporal, middle temporal, temporal pole, inferior parietal, superior parietal, superior frontal, inferior frontal, and precuneus regions. <br />
+Original paper: https://doi.org/10.1093/cercor/bhn113.
+
+#### Jack et al.
+
+A pared down version that includes bilateral entorhinal cortex, fusiform gyrus, and inferior and middle temporal gyri. This version is sensitive to neurodegeneration in medial temporal regions susceptible to AD pathology in the earliest stages of the disease. <br />
+Original paper: https://doi.org/10.1093/brain/awv283.
+
+#### Schwarz et al.
+
+An updated version that includes bilateral entorhinal cortex, inferior temporal, mid-temporal, inferior parietal, fusiform, and precuneus regions. <br />
+Original paper: https://doi.org/10.1016/j.nicl.2016.05.017
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
