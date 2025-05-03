@@ -3,7 +3,7 @@
 # Inputs:
 # lhct -- data.frame containing freesurfer's aparcstats2table cortical thickness output for the LEFT hemisphere.
 # rhct -- data.frame containing freesurfer's aparcstats2table cortical thickness output for the RIGHT hemisphere.
-# group -- research group that proposed an AD-signature index; one of c("jack", "schwarz", "dickerson")
+# type -- research group that proposed an AD-signature index; one of c("jack", "schwarz", "dickerson")
 
 # Description of ADSCT variations
 # Jack: Original version using entorhinal cortex, fusiform gyrus, and inferior and middle temporal gyri.
@@ -14,26 +14,26 @@
 # cortical thickness files should be for the same timepoint.
 
 # Output:
-# data.frame containing subjbect id and adsct.
+# data.frame containing subject id and ADSCT.
 
-# unweighted mean cortical thickness
+# Unweighted mean cortical thickness
 calc_adsct <- function(lhct, rhct, type = NULL) {
-  # required libraries
+  # Required libraries
   require(dplyr)
   require(magrittr)
 
-  # rename aparc.thickness to ID
+  # Rename aparc.thickness to ID
   lhct <- lhct %>%
     rename(ID = lh.aparc.thickness)
 
   rhct <- rhct %>%
     rename(ID = rh.aparc.thickness)
 
-  # merge hemispheres
+  # Merge hemispheres
   ct <- inner_join(lhct, rhct, by = "ID")
 
-  # helper function to calculate ADSCT from Jack et all., 2015
-  # calculate adsct. ROIs (8 bilateral) are taken from Jack et al., 2017.
+  # Calculate ADSCT based on the
+  # Jack et al. version
   if (type == "jack") {
     adsct <- ct %>%
       mutate(adsct = rowMeans(dplyr::select(., contains(
@@ -45,6 +45,7 @@ calc_adsct <- function(lhct, rhct, type = NULL) {
         )
       )), na.rm = TRUE))
   } else if (type == "schwarz") {
+    # Schwarz et al. version
     adsct <- ct %>%
       mutate(adsct = rowMeans(dplyr::select(., contains(
         c(
@@ -57,6 +58,7 @@ calc_adsct <- function(lhct, rhct, type = NULL) {
         )
       )), na.rm = TRUE))
   } else if (type == "dickerson") {
+    # Dickerson et al. version
     adsct <- ct %>%
       mutate(adsct = rowMeans(dplyr::select(., contains(
         c(
@@ -72,46 +74,8 @@ calc_adsct <- function(lhct, rhct, type = NULL) {
       )), na.rm = TRUE))
   }
 
-  #     #regress with the Aging signature (excluding regions overlapping with AD signature regions
-  #     rois_ad = ct %>%
-  #       dplyr::select(c(
+  adsct %<>%
+    dplyr::select(., ID, adsct)
 
-  #         middletemporal,
-  #             temporalpole,
-  #             inferiortemporal,
-  #             angular,
-  #             supramarginal,
-  #             superiorparietal,
-  #             precuneus,
-  #             middlefrontal,
-  #             superiorfrontal
-  #       ))
-
-  #       ct %>%
-  #         mutate(adsct = rowMeans(dplyr::select(., contains(
-  #           c(
-  #             "middletemporal",
-  #             "temporalpole",
-  #             "inferiortemporal",
-  #             "angular",
-  #             "supramarginal",
-  #             "superiorparietal",
-  #             "precuneus",
-  #             "middlefrontal",
-  #             "superiorfrontal"
-  #           )
-  #         )), na.rm = TRUE))
-
-
-  #  A: medial temporal, B: inferior temporal, C: temporal pole, D: Angular, E: superior frontal, F: superior parietal, G: supramarginal, H: precuneus, I: middle frontal, J: calcarine, K: caudal insula, L: cuneus, M: caudal fusiform, N: dorsomedial frontal, O: lateral occipital, P: precentral, Q: inferior frontal.
-
-  #   } else if (type == "dickerson") {
-
-  #   }
-
-  #    %>%
-  #      dplyr::select(ID, adsct)
-  adsct %>%
-    dplyr::select(ID, adsct) %>%
-    return()
+  return(adsct)
 }
